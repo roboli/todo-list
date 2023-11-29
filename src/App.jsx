@@ -29,6 +29,11 @@ function App() {
     setTodos(cp);
   };
 
+  const removeTodo = (id) => {
+    const cp = todos.filter(i => i.id !== id);
+    setTodos(cp);
+  };
+
   return (
     <div className="App">
       <div className="App-content">
@@ -38,7 +43,8 @@ function App() {
           save={addNewTodo} />
         <TodoList
           todos={todos}
-          changeTodo={editTodo} />
+          changeTodo={editTodo}
+          removeTodo={removeTodo} />
       </div>
     </div>
   );

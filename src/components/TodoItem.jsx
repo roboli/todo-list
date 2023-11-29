@@ -3,8 +3,10 @@ import TimeAgo from 'react-timeago';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import TextField from '@mui/material/TextField';
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
 
-function TodoItem({ description, createdAt, save }) {
+function TodoItem({ description, createdAt, save, remove }) {
   const [ isEdit, setIsEdit ] = React.useState(false);
   const [ text, setText ] = React.useState(false);
 
@@ -47,8 +49,22 @@ function TodoItem({ description, createdAt, save }) {
     setIsEdit(true);
   };
 
+  const handleDelete = (e) => {
+    e.preventDefault();
+    remove();
+  };
+
   return (
-    <ListItem onClick={startEdit}>
+    <ListItem
+      onClick={startEdit}
+      secondaryAction={
+        <IconButton
+          edge="end"
+          aria-label="delete"
+          onClick={handleDelete}>
+          <DeleteIcon />
+        </IconButton>
+      }>
       {content}
     </ListItem>
   );
