@@ -13,7 +13,7 @@ function TodoList({ todos, changeTodo, removeTodo, doneTodo }) {
   ));
 
   return (
-    <List>
+    <List style={{ width: '20%' }}>
       {items}
     </List>
   );
