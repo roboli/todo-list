@@ -1,15 +1,15 @@
 import List from '@mui/material/List';
 import TodoItem from './TodoItem';
 
-function TodoList({ todos, changeTodo, removeTodo }) {
+function TodoList({ todos, changeTodo, removeTodo, doneTodo }) {
 
   const items = todos.map(i => (
     <TodoItem
       key={i.id}
-      description={i.description}
-      createdAt={i.createdAt}
+      item={i}
       save={(text) => changeTodo(i.id, text)}
-      remove={() => removeTodo(i.id)} />
+      remove={() => removeTodo(i.id)}
+      done={() => doneTodo(i.id)} />
   ));
 
   return (

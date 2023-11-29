@@ -12,7 +12,8 @@ function App() {
       const todo = {
         id: todos.length,
         description: newTodo,
-        createdAt: Date.now()
+        createdAt: Date.now(),
+        done: false
       };
 
       setTodos([todo].concat(todos));
@@ -34,6 +35,15 @@ function App() {
     setTodos(cp);
   };
 
+  const doneTodo = (id) => {
+    const cp = [...todos];
+
+    const item = cp.find(i => i.id === id);
+    item.done = !item.done;
+
+    setTodos(cp);
+  };
+
   return (
     <div className="App">
       <div className="App-content">
@@ -44,7 +54,8 @@ function App() {
         <TodoList
           todos={todos}
           changeTodo={editTodo}
-          removeTodo={removeTodo} />
+          removeTodo={removeTodo}
+          doneTodo={doneTodo} />
       </div>
     </div>
   );
