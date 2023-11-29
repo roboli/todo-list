@@ -10,7 +10,7 @@ function App() {
   const addNewTodo = () => {
     if (newTodo) {
       const todo = {
-        id: `todo_${todos.length}`,
+        id: todos.length,
         description: newTodo,
         createdAt: Date.now()
       };
@@ -20,6 +20,15 @@ function App() {
     }
   };
 
+  const editTodo = (id, text) => {
+    const cp = [...todos];
+
+    const item = cp.find(i => i.id === id);
+    item.description = text;
+
+    setTodos(cp);
+  };
+
   return (
     <div className="App">
       <div className="App-content">
@@ -27,7 +36,9 @@ function App() {
           text={newTodo}
           setText={setNewTodo}
           save={addNewTodo} />
-        <TodoList todos={todos} />
+        <TodoList
+          todos={todos}
+          changeTodo={editTodo} />
       </div>
     </div>
   );
