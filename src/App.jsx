@@ -8,13 +8,16 @@ function App() {
   const [ todos, setTodos ] = React.useState([]);
 
   const addNewTodo = () => {
-    const todo = {
-      description: newTodo,
-      createdAt: Date.now()
-    };
+    if (newTodo) {
+      const todo = {
+        id: `todo_${todos.length}`,
+        description: newTodo,
+        createdAt: Date.now()
+      };
 
-    setTodos([todo].concat(todos));
-    setNewTodo('');
+      setTodos([todo].concat(todos));
+      setNewTodo('');
+    }
   };
 
   return (

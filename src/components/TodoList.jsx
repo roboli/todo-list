@@ -4,7 +4,10 @@ import TodoItem from './TodoItem';
 function TodoList({ todos }) {
 
   const items = todos.map(i => (
-    <TodoItem description={i.description} createdAt={i.createdAt} />
+    <TodoItem
+      key={i.id}
+      description={i.description}
+      createdAt={i.createdAt} />
   ));
 
   return (

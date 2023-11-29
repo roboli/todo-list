@@ -6,7 +6,7 @@ function TodoItem({ description, createdAt }) {
   const timeLabel = (
     <TimeAgo
       date={createdAt}
-      minPeriod={60} />
+      minPeriod={5} />
   );
 
   return (
